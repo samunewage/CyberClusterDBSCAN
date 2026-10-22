@@ -1,68 +1,54 @@
-# Diario de Uso de Inteligencia Artificial (Diario de IA)
+# Diário de Uso de Ferramentas de IA
 
-**Projeto:** CyberCluster - Agrupamento e Deteccao de Anomalias em Conexoes de Rede (CICIDS2017)  
-**Instituicao:** Faculdades Integradas de Bauru (FIB)  
-**Disciplina:** Inteligencia Artificial II  
-**Autores:**
-- Samuel Esperanca Vieira Panobianco
-- Bryan Williams Souto Silva
-- Lucas Miguel Cardoso de Almeida
-- Renan Denadai de Paul  
+**Projeto:** CyberCluster — Análise de Tráfego de Rede com DBSCAN  
+**Instituição:** Faculdades Integradas de Bauru (FIB)  
+**Disciplina:** Inteligência Artificial II  
+**Integrantes:** Samuel Esperança Vieira Panobianco, Bryan Williams Souto Silva, Lucas Miguel Cardoso de Almeida, Renan Denadai de Paul  
 
 ---
 
-## 1. Visao Geral e Politica de Uso de IA
+## 1. Visão Geral
 
-O presente documento atesta o registro metodico e auditavel do uso de ferramentas de Inteligencia Artificial no ciclo de desenvolvimento do projeto CyberCluster. A IA atuou como ferramenta de aceleracao de escrita de boilerplate, geracao de codigo modular e documentacao tecnica sob a supervisao e validacao conceitual continua dos autores humanos.
-
-Todas as decisoes referentes a formulacao matematica, complexidade assintotica dos algoritmos, tratamento de matrizes esparsas, prevencao de vazamento de dados e selecao de hiperparametros foram estritamente validadas pela equipe tecnica.
+Este documento registra as consultas pontuais realizadas com ferramentas de Inteligência Artificial para auxílio no levantamento de referências, dúvidas de sintaxe em bibliotecas Python (Pandas e Scikit-Learn) e organização da interface gráfica do protótipo. Todas as implementações, decisões de pré-processamento e análises de resultados foram desenvolvidas e validadas diretamente pela equipe.
 
 ---
 
-## 2. Registro Estruturado de Sessoes
+## 2. Registro de Consultas
 
-### Sessao 01 - Estruturacao do Pipeline de Dados e Tratamento Numerico
+### Sessão 1 — Pesquisa Bibliográfica e Validação do Problema
+- **Data:** 21/10/2026
+- **Ferramenta:** ChatGPT
+- **Objetivo da Consulta:** Levantamento de artigos de referência sobre aplicação de DBSCAN em tráfego de rede e artigos críticos sobre inconsistências de fluxo no dataset CICIDS2017.
+- **Resultado / Uso:** A ferramenta indicou a leitura do artigo de Schubert et al. (2017) sobre diretrizes de uso do DBSCAN e de Engelen et al. (2021) sobre problemas no CICIDS2017. A equipe consultou os textos e os utilizou na fundamentação da metodologia.
+
+---
+
+### Sessão 2 — Tratamento de Valores Especiais no Pandas
 - **Data:** 22/10/2026
-- **Ferramenta Utilizada:** Antigravity IDE / Assistente
-- **Versao do Modelo:** Gemini 3.8 Flash (Medium)
-- **Prompt Aplicado:**
-  > "Estruture e implemente todo o codigo do projeto CyberCluster no diretorio atual de trabalho. O projeto aplica o algoritmo DBSCAN em conexoes de rede do CICIDS2017 com baseline em K-Means. Documente cada script no topo explicando objetivo, entradas, saidas e fluxo de execucao, alem de comentarios detalhando a razao tecnica de cada etapa."
-- **Aproveitamento e Adaptacoes:**
-  - *Aproveitamento:* Estruturacao em blocos tematicos (Bloco 1 ao Bloco 6), saneamento numerico com substituicao de np.inf por NaN e descarte seguro para manter a integridade da FPU.
-  - *Adaptacao Tecnica Humana:* Implementacao de um gerador estocastico representativo como contingencia operacional caso o dataset de 50GB nao esteja fisicamente presente em data/raw/, permitindo testes imediatos e reprodutibilidade de ponta a ponta.
+- **Ferramenta:** Gemini
+- **Objetivo da Consulta:** Dúvida de sintaxe sobre como substituir eficientemente valores infinitos (`inf` e `-inf`) gerados por divisão por zero nas colunas de taxa do dataset antes de aplicar a padronização.
+- **Resultado / Uso:** Foi adotado o encadeamento de `df.replace([np.inf, -np.inf], np.nan)` com `dropna()`, garantindo que apenas registros numéricos válidos entrassem no padronizador.
 
 ---
 
-### Sessao 02 - Estimativa Analitica de Epsilon, K-Distance Graph e Cenarios
-- **Data:** 22/10/2026
-- **Ferramenta Utilizada:** Antigravity IDE / Assistente
-- **Versao do Modelo:** Gemini 3.8 Flash (Medium)
-- **Prompt Aplicado:**
-  > "Implementar no pipeline um metodo para plotar e salvar a curva do k-distance graph com k=2*dimensoes para estimativa do joelho de eps. Adicionar no app.py a opcao de alternar entre o dia de DDoS e PortScan. Salvar metricas e matrizes de contingencia em arquivos .json em uma pasta reports/. Nao utilize emojis nem decoracoes informais; mantenha comentarios estritamente tecnicos com complexidade O(N) e fundamentacao estatistica."
-- **Aproveitamento e Adaptacoes:**
-  - *Aproveitamento:* Codificacao da rotina estimar_joelho_k_distance utilizando NearestNeighbors(n_neighbors=k, n_jobs=-1), computacao da distancia vetorial ortogonal a reta secante unitaria para localizacao automatica da deflexao maxima, e plotagem do grafico em reports/figures/k_distance_graph.png.
-  - *Adaptacao Tecnica Humana:* Extensao da classe de geracao sintetica para modelar individualmente os perfis comportamentais de DDoS (altas taxas de bytes e pacotes com ACK constante) e PortScan (tempos inferiores a 10 ms, tamanho de pacote de 40 bytes e flags SYN dominantes), garantindo fidelidade com os CSVs Friday-WorkingHours do CICIDS2017.
+### Sessão 3 — Cálculo Vetorial do Joelho na Curva de k-Distâncias
+- **Data:** 23/10/2026
+- **Ferramenta:** Gemini
+- **Objetivo da Consulta:** Esclarecimento matemático sobre o método da distância perpendicular à reta secante para identificação analítica do ponto de inflexão (cotovelo) na curva de k-distâncias.
+- **Resultado / Uso:** A fórmula vetorial normalizada foi compreendida pelo grupo e implementada no script `pipeline.py` para sugerir o parâmetro `eps` inicial de forma não subjetiva.
 
 ---
 
-## 3. Evidencias de Validacao Tecnica Humana
-
-### 3.1. Tratamento Rigoroso de Divisoes por Zero
-No calculo de vazao temporal efetuado pelo extrator CICFlowMeter:
-$$\text{Flow Bytes/s} = \frac{\text{Total Length of Flow}}{\text{Flow Duration}}$$
-Quando a duracao e nula ou inferior a granularidade do clock da interface de rede, ocorre divisao por zero na FPU, gerando infinitos e NaN. A equipe validou a eliminacao desses registros antes do ajuste matricial, assegurando que o espaco euclidiano permanecesse fechado e livre de singularidades.
-
-### 3.2. Prevencao de Data Leakage Topologico
-Atributos como 'Flow ID', 'Source IP', 'Source Port', 'Destination IP', 'Destination Port' e 'Timestamp' identificam maquinas fisicas da bancada de teste. Caso mantidos, o modelo aprenderia apenas os IPs das maquinas de teste, tornando-se ineficaz para aplicacao em redes corporativas externas. A equipe homologou o expurgo previo dessas variaveis e o isolamento cego do rotulo 'Label'.
-
-### 3.3. Deteccao Vetorial de Cotovelo na Curva de k-Distancias
-A determinacao de epsilon por inspecao visual humana e subjetiva. A equipe validou o algoritmo analitico de maxima distancia perpendicular a reta secante:
-$$\text{distancia}_i = x_i^{\text{norm}} - y_i^{\text{norm}}$$
-Onde $x_i^{\text{norm}} = \frac{i}{N-1}$ e $y_i^{\text{norm}} = \frac{d_i - d_0}{d_{N-1} - d_0}$.
-O indice $i^*$ que maximiza essa diferenca corresponde a maior curvatura da funcao de distribuicao acumulada de distancias locais, fornecendo a estimativa de epsilon com embasamento matematico rigoroso.
+### Sessão 4 — Organização dos Componentes no Streamlit
+- **Data:** 24/10/2026
+- **Ferramenta:** ChatGPT / Gemini
+- **Objetivo da Consulta:** Dúvida sobre a melhor forma de organizar múltiplas visualizações (projeção 2D, tabelas de contingência e gráficos de métricas) em abas sem sobrecarregar a interface.
+- **Resultado / Uso:** Foi utilizada a estrutura de `st.tabs()` e controles na barra lateral (`st.sidebar`) no arquivo `app.py`, facilitando a navegação durante a apresentação.
 
 ---
 
-## 4. Declaracao de Integridade Academica
+## 3. Validações Realizadas pela Equipe
 
-Os autores confirmam que toda a logica de programacao, analise de complexidade computacional e interpretacao dos resultados tecnicos foram devidamente validadas, auditadas e compreendidas por todos os integrantes da equipe.
+- **Prevenção de Vazamento de Dados:** Verificação manual para garantir que a coluna de rótulos (`Label`) não fosse utilizada no treinamento ou padronização, ficando restrita à conferência final das métricas.
+- **Remoção de Identificadores:** Decisão própria da equipe de descartar colunas de IP, porta e timestamp, forçando os modelos a agruparem conexões exclusivamente pelo comportamento volumétrico e temporal.
+- **Conferência das Métricas:** Todos os valores de Silhueta, ARI e proporção de ruído gerados pelo pipeline foram inspecionados diretamente pelos integrantes.
