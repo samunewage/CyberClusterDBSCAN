@@ -1,0 +1,56 @@
+{
+    "-1": {
+        "BENIGN": 27,
+        "DDoS": 1,
+        "PortScan": 29,
+        "Total": 57
+    },
+    "0": {
+        "BENIGN": 0,
+        "DDoS": 462,
+        "PortScan": 0,
+        "Total": 462
+    },
+    "1": {
+        "BENIGN": 75,
+        "DDoS": 0,
+        "PortScan": 0,
+        "Total": 75
+    },
+    "2": {
+        "BENIGN": 1003,
+        "DDoS": 0,
+        "PortScan": 0,
+        "Total": 1003
+    },
+    "3": {
+        "BENIGN": 0,
+        "DDoS": 0,
+        "PortScan": 271,
+        "Total": 271
+    },
+    "4": {
+        "BENIGN": 0,
+        "DDoS": 19,
+        "PortScan": 0,
+        "Total": 19
+    },
+    "5": {
+        "BENIGN": 95,
+        "DDoS": 0,
+        "PortScan": 0,
+        "Total": 95
+    },
+    "6": {
+        "BENIGN": 0,
+        "DDoS": 18,
+        "PortScan": 0,
+        "Total": 18
+    },
+    "Total": {
+        "BENIGN": 1200,
+        "DDoS": 500,
+        "PortScan": 300,
+        "Total": 2000
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "projeto": "CyberCluster",
+    "cenario_trafego": "misto",
+    "instancias_analisadas": 2000,
+    "dimensionalidade_espaco": 13,
+    "estimativa_k_distance": {
+        "k_utilizado": 26,
+        "indice_joelho": 1846,
+        "epsilon_otimo_sugerido": 1.4611806023101204,
+        "grafico_gerado": "reports/figures/k_distance_graph.png"
+    },
+    "baseline_kmeans": {
+        "k_clusters": 3,
+        "silhouette_score": 0.6760576044179106,
+        "adjusted_rand_index": 1.0,
+        "davies_bouldin_index": 0.49981237248911564,
+        "inercia": 6692.589193931139,
+        "taxa_ruido": 0.0
+    },
+    "modelo_dbscan": {
+        "epsilon_aplicado": 1.4611806023101204,
+        "min_samples": 15,
+        "clusters_densos_encontrados": 7,
+        "conexoes_ruido_absoluto": 57,
+        "percentual_ruido": 2.85,
+        "silhouette_score_core": 0.5433908146836094,
+        "davies_bouldin_index_core": 0.6962329696182147,
+        "adjusted_rand_index": 0.7545842338504312
+    }
+}
