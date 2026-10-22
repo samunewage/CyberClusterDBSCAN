@@ -15,7 +15,8 @@
 
 **Instituicao de Ensino:** Faculdades Integradas de Bauru (FIB)  
 **Curso:** Engenharia de Computacao / Ciencia da Computacao  
-**Disciplina:** Inteligencia Artificial II / Mineracao de Dados  
+**Disciplina:** Inteligencia Artificial II / Mineracao de Dados
+**Professor:** Ronaldo Dametto
 
 ---
 
@@ -50,8 +51,8 @@ Antes de iniciar a instalacao, assegure que a estacao de trabalho atenda aos seg
 Abra o prompt de comando (PowerShell no Windows ou Bash no Linux/macOS) e execute:
 
 ```bash
-git clone https://github.com/seu-usuario/CyberCluster.git
-cd CyberCluster
+git clone https://github.com/samunewage/CyberClusterDBSCAN.git
+cd CyberClusterDBSCAN
 ```
 
 ### Opcao B: Download em Arquivo Compactado (.ZIP)
@@ -61,7 +62,7 @@ Caso nao possua o utilitario Git instalado:
 3. Descompacte o arquivo no diretorio de sua preferencia.
 4. Abra o terminal e navegue ate a pasta descompactada:
 ```bash
-cd caminho/para/CyberCluster-main
+cd caminho/para/CyberClusterDBSCAN-main
 ```
 
 ---
@@ -69,7 +70,7 @@ cd caminho/para/CyberCluster-main
 ## 4. Estrutura de Diretorios
 
 ```text
-CyberCluster/
+CyberClusterDBSCAN/
 |-- .gitignore                      # Regras de exclusao de dados brutos e ambientes virtuais
 |-- requirements.txt                # Dependencias e bibliotecas do ecossistema Python
 |-- README.md                       # Documentacao tecnica do projeto
