@@ -1,8 +1,47 @@
-A primeira parte está excelente e a formatação ficou perfeita no GitHub.
 
-Para você completar a edição sem duplicar nada, segue abaixo a **segunda parte (da Seção 3 até o final)** pronta para você colar logo abaixo da linha do navegador:
 
-```markdown
+---
+
+# CyberCluster: Deteccao de Anomalias e Agrupamento de Fluxos de Rede (CICIDS2017)
+
+---
+
+## Autores e Vinculo Institucional
+
+- **Samuel Esperanca Vieira Panobianco**
+- **Bryan Williams Souto Silva**
+- **Lucas Miguel Cardoso de Almeida**
+- **Renan Denadai de Paul**
+
+**Instituicao de Ensino:** Faculdades Integradas de Bauru (FIB)  
+**Curso:** Engenharia de Computacao / Ciencia da Computacao  
+**Disciplina:** Inteligencia Artificial II / Mineracao de Dados  
+
+---
+
+## 1. Problema e Contexto
+
+A triagem manual de eventos de seguranca da informacao e a utilizacao de assinaturas deterministicas em sistemas IDS/IPS convencionais apresentam ineficiencia frente a ataques de dia zero (zero-day), varreduras discretas (PortScan) e incidentes volumetricos de negacao de servico (DDoS).
+
+O projeto **CyberCluster** implementa uma abordagem analitica baseada em **Aprendizado de Maquina Nao Supervisionado**. Utiliza-se o algoritmo **DBSCAN** (*Density-Based Spatial Clustering of Applications with Noise*) para realizar a separacao autonoma entre fluxos legitimos e atipicos no espaco euclidiano multidimensional, confrontando seu desempenho contra o modelo baseline **K-Means**.
+
+---
+
+## 2. Pre-Requisitos de Sistema
+
+Antes de iniciar a instalacao, assegure que a estacao de trabalho atenda aos seguintes requisitos minimos de ambiente:
+
+- **Sistema Operacional:** Windows 10/11 (64 bits), Linux (Ubuntu 20.04+ / Debian 11+) ou macOS (12+).
+- **Interpretador Python:** Python versao 3.10, 3.11 ou 3.12 instalada e adicionada ao PATH do sistema operacional.
+- **Gerenciador de Pacotes:** `pip` atualizado para a versao mais recente.
+- **Controle de Versao:** Git instalado localmente (necessario para clonagem via terminal).
+- **Recursos de Hardware Recomendados:**
+  - Memoria RAM: Minimo de 8 GB (Recomendado: 16 GB para processamento de matrizes de distancia).
+  - Espaco em Disco: 2 GB livres para codigo e dependencias (caso utilize os CSVs brutos do CICIDS2017, reserve ao menos 15 GB adicionais).
+- **Navegador Web para a Interface (Importante):**
+  - Recomenda-se a utilizacao de navegadores com suporte a WebGL habilitado para a renderizacao dos graficos interativos do Plotly: **Mozilla Firefox**, **Microsoft Edge**, **Brave** ou **Safari**.
+  - *Observacao Tecnica sobre Google Chrome:* Em determinadas distribuicoes corporativas ou perfis do Google Chrome com aceleracao de hardware restrita por politica de seguranca ou extensoes de bloqueio de script ativas, a renderizacao WebGL de dispersao 2D pode sofrer limitacao de framerate ou travamento de aba. Caso ocorra lentidao, abra a aplicacao preferencialmente no **Mozilla Firefox** ou **Microsoft Edge**.
+
 ---
 
 ## 3. Obtencao do Codigo-Fonte (Download do Git)
@@ -21,9 +60,9 @@ Caso nao possua o utilitario Git instalado:
 2. Selecione a opcao **Download ZIP**.
 3. Descompacte o arquivo no diretorio de sua preferencia.
 4. Abra o terminal e navegue ate a pasta descompactada:
-   ```bash
-   cd caminho/para/CyberCluster-main
-   ```
+```bash
+cd caminho/para/CyberCluster-main
+```
 
 ---
 
@@ -74,11 +113,9 @@ O projeto opera sobre o benchmark de ciberseguranca **CICIDS2017** (*Canadian In
 No Windows (PowerShell):
 ```powershell
 python -m venv venv
-# ou utilizando o launcher do Windows: py -m venv venv
-
-# Ativacao no PowerShell:
 .\venv\Scripts\Activate.ps1
 ```
+
 *Caso ocorra erro de politica de execucao de scripts no PowerShell, execute previamente:*
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -121,11 +158,6 @@ Para executar com o cenario de Trafego Misto (Normal + DDoS + PortScan):
 python src/pipeline.py --cenario misto --amostras 10000
 ```
 
-*Parametros Opcionais Disponiveis:*
-- `--amostras`: Inteiro com a quantidade de conexoes para amostragem estratificada (padrao: 10000).
-- `--eps`: Ponto flutuante definindo o raio epsilon (se omitido, o algoritmo adota a estimativa do cotovelo analitico).
-- `--min_samples`: Inteiro com a quantidade minima de conexoes nucleares (padrao: 15).
-
 ---
 
 ### Passo 6.4: Iniciar a Aplicacao Web Interativa (Streamlit)
@@ -135,13 +167,13 @@ Para abrir a estacao analitica interativa:
 streamlit run app/app.py
 ```
 
-Caso o navegador nao abra automaticamente, copie o endereco fornecido no terminal e acerte a inicializacao:
+Caso o navegador nao abra automaticamente, copie o endereco fornecido no terminal e abra manualmente:
 ```text
-Local URL: http://localhost:8501
+http://localhost:8501
 ```
 
 *Recomendacao Operacional de Navegacao:*
-Para garantir a renderizacao fluida das projecoes espaciais em WebGL (Plotly) e evitar eventuais bloqueios de aceleracao de hardware do Google Chrome, cole a URL `http://localhost:8501` prioritariamente no **Mozilla Firefox** ou no **Microsoft Edge**.
+Para garantir a renderizacao fluida das projecoes espaciais em WebGL (Plotly) e evitar eventuais bloqueios de aceleracao de hardware do Google Chrome, abra a URL `http://localhost:8501` prioritariamente no **Mozilla Firefox** ou no **Microsoft Edge**.
 
 ---
 
@@ -160,4 +192,3 @@ Metricas aferidas em teste amostral estratificado de 10.000 instancias sobre o c
 ### Justificativas Tecnicas das Conclusoes:
 1. **Inadequacao do K-Means em Seguranca:** O K-Means assume a priori que os dados sao gaussianos e esfericos. Conexoes maliciosas raras ou sondagens de rede sao compulsoriamente alocadas ao centroide mais proximo, corrompendo os parametros medios de tráfego benigno.
 2. **Eficacia do Isolamento DBSCAN:** O DBSCAN identifica organicamente conexoes isoladas e direciona pacotes anomalos ao cluster `-1` (Ruido), fornecendo um mecanismo confiavel para geracao de alertas em centros de operacoes de seguranca (SOC).
-```
