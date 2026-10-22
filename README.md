@@ -11,7 +11,7 @@
 - **Samuel Esperanca Vieira Panobianco**
 - **Bryan Williams Souto Silva**
 - **Lucas Miguel Cardoso de Almeida**
-- **Renan Denadai de Paul**
+- **Renan Denadai de Paula**
 
 **Instituicao de Ensino:** Faculdades Integradas de Bauru (FIB)  
 **Curso:** Engenharia de Computacao / Ciencia da Computacao  
