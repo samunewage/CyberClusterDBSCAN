@@ -1,48 +1,8 @@
+A primeira parte está excelente e a formatação ficou perfeita no GitHub.
 
-
-
+Para você completar a edição sem duplicar nada, segue abaixo a **segunda parte (da Seção 3 até o final)** pronta para você colar logo abaixo da linha do navegador:
 
 ```markdown
-# CyberCluster: Deteccao de Anomalias e Agrupamento de Fluxos de Rede (CICIDS2017)
-
----
-
-## Autores e Vinculo Institucional
-
-- **Samuel Esperanca Vieira Panobianco**
-- **Bryan Williams Souto Silva**
-- **Lucas Miguel Cardoso de Almeida**
-- **Renan Denadai de Paul**
-
-**Instituicao de Ensino:** Faculdades Integradas de Bauru (FIB)  
-**Curso:** Engenharia de Computacao / Ciencia da Computacao  
-**Disciplina:** Inteligencia Artificial II / Mineracao de Dados  
-
----
-
-## 1. Problema e Contexto
-
-A triagem manual de eventos de seguranca da informacao e a utilizacao de assinaturas deterministicas em sistemas IDS/IPS convencionais apresentam ineficiencia frente a ataques de dia zero (zero-day), varreduras discretas (PortScan) e incidentes volumetricos de negacao de servico (DDoS).
-
-O projeto **CyberCluster** implementa uma abordagem analitica baseada em **Aprendizado de Maquina Nao Supervisionado**. Utiliza-se o algoritmo **DBSCAN** (*Density-Based Spatial Clustering of Applications with Noise*) para realizar a separacao autonoma entre fluxos legitimos e atipicos no espaco euclidiano multidimensional, confrontando seu desempenho contra o modelo baseline **K-Means**.
-
----
-
-## 2. Pre-Requisitos de Sistema
-
-Antes de iniciar a instalacao, assegure que a estacao de trabalho atenda aos seguintes requisitos minimos de ambiente:
-
-- **Sistema Operacional:** Windows 10/11 (64 bits), Linux (Ubuntu 20.04+ / Debian 11+) ou macOS (12+).
-- **Interpretador Python:** Python versao 3.10, 3.11 ou 3.12 instalada e adicionada ao PATH do sistema operacional.
-- **Gerenciador de Pacotes:** `pip` atualizado para a versao mais recente.
-- **Controle de Versao:** Git instalado localmente (necessario para clonagem via terminal).
-- **Recursos de Hardware Recomendados:**
-  - Memoria RAM: Minimo de 8 GB (Recomendado: 16 GB para processamento de matrizes de distancia).
-  - Espaco em Disco: 2 GB livres para codigo e dependencias (caso utilize os CSVs brutos do CICIDS2017, reserve ao menos 15 GB adicionais).
-- **Navegador Web para a Interface (Importante):**
-  - Recomenda-se a utilizacao de navegadores com suporte a WebGL habilitado para a renderizacao dos graficos interativos do Plotly: **Mozilla Firefox**, **Microsoft Edge**, **Brave** ou **Safari**.
-  - *Observacao Tecnica sobre Google Chrome:* Em determinadas distribuicoes corporativas ou perfis do Google Chrome com aceleracao de hardware restrita por politica de seguranca ou extensoes de bloqueio de script ativas, a renderizacao WebGL de dispersao 2D pode sofrer limitacao de framerate ou travamento de aba. Caso ocorra lentidao, abra a aplicacao preferencialmente no **Mozilla Firefox** ou **Microsoft Edge**.
-
 ---
 
 ## 3. Obtencao do Codigo-Fonte (Download do Git)
@@ -201,5 +161,3 @@ Metricas aferidas em teste amostral estratificado de 10.000 instancias sobre o c
 1. **Inadequacao do K-Means em Seguranca:** O K-Means assume a priori que os dados sao gaussianos e esfericos. Conexoes maliciosas raras ou sondagens de rede sao compulsoriamente alocadas ao centroide mais proximo, corrompendo os parametros medios de tráfego benigno.
 2. **Eficacia do Isolamento DBSCAN:** O DBSCAN identifica organicamente conexoes isoladas e direciona pacotes anomalos ao cluster `-1` (Ruido), fornecendo um mecanismo confiavel para geracao de alertas em centros de operacoes de seguranca (SOC).
 ```
-
-O arquivo [README.md](file:///C:/Users/Suporte/.gemini/antigravity-ide/scratch/README.md) na raiz do projeto já foi devidamente sincronizado com esse conteúdo.
