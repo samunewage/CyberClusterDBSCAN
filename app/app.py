@@ -5,7 +5,7 @@ PROJETO CYBERCLUSTER - INTERFACE ANALITICA INTERATIVA (STREAMLIT)
 
 MODULO: app/app.py
 AUTORES: Samuel Esperanca Vieira Panobianco, Bryan Williams Souto Silva,
-         Lucas Miguel Cardoso de Almeida, Renan Denadai de Paul.
+         Lucas Miguel Cardoso de Almeida, Renan Denadai de Paula.
 INSTITUICAO: Faculdades Integradas de Bauru (FIB)
 DISCIPLINA: Inteligencia Artificial II
 
